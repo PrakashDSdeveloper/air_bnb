@@ -90,7 +90,7 @@ if selected == 'GeoVisual Analysis':
 
     # st.title(':rainbow[AirBnb Geospatial Analysis]')
 
-    data = pd.read_csv(r'airbnb_datasets.csv')
+    data = pd.read_csv(r'Data_Set\airbnb_dataset.csv')
 
     aggregated = data.groupby(['country','city']).count()
 
@@ -262,8 +262,8 @@ if selected == 'GeoVisual Analysis':
             country_price_wise = data.query(f'country == "{country}" and city == "{city}"')
 
             plt.figure(figsize=(8,3.5))
-            fig1 = sns.distplot(country_price_wise['price'])
-            st.pyplot()
+            fig1 = sns.displot(country_price_wise['price'])
+            st.pyplot(fig1)
 
             if country_price_wise["price"].skew() > 0:
                 st.write(f'Since the value is Positive : {country_price_wise["price"].skew()}, the curve is skewed Positively to the right side')
